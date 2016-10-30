@@ -1,0 +1,64 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    text-align:center;
+}
+
+#container {
+ width:1200px;
+ margin-left:auto;
+ margin-right:auto;
+ text-align:left;
+}
+#contentschat {
+    width:1200px;
+    // float:right;
+    padding-bottom: 100px;
+    // 背景画像の設定
+//     background-image: 		url(/assets/bg.jpg);
+// 	background-repeat: 		no-repeat;
+// 	background-position: 	center center;
+// 	background-attachment:  fixed;
+// 	-moz-background-size:	cover;
+// 	background-size:		cover; 	        
+}
+#contents_home {
+    padding-bottom: 100px;
+    width:1200px;
+    height:450px;
+    // float:right;
+    // margin-left: 10px;
+    // 背景画像の設定
+    background-image: 		url(/assets/bg.jpg);
+	background-repeat: 		no-repeat;
+	background-position: 	center center;
+	background-attachment:  scroll;
+	-moz-background-size:	cover;
+	background-size:		cover; 	        
+}
+
+ 
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+}
+
+div.layout-box {
+    float: left;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+p.mymessage {
+    text-align:right;
+}
+p.botmessage {
+    text-align:left;
+}

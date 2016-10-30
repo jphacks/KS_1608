@@ -1,0 +1,80 @@
+<% provide(:title, "Home") %>
+<% cookies[:click_count] = 1 %>
+<%= stylesheet_link_tag "style", :media => "all" %>
+
+<% if @message then %>
+    <% filename = "./data/chat_text.txt" %>
+    <% File.open(filename,'w:utf-8') { |file| %>
+        <% file.write @message%>
+    <% } %>
+    <!-- 会話のデータ生成 -->
+    <% command = 'python ./scripts/conversation.py 5' %>
+    <% system(command)%>
+<% end %>
+
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="utf-8" />
+    <title> Home </title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  
+  <body>
+    </pre>
+        <div id="container">
+            <div id="contents_chat">
+                <div id="wrapper">
+                    <div id="chatbox">
+                          <% begin %>
+                            <% mymessage = "" %>
+                            <% botmessage = "" %>
+                            <% File.open('./data/chat_text.txt') do |file| %>
+                                <% file.each_line do |line| %>
+                                  <% mymessage = line %>
+                                <% end %>
+                            <% end %>
+                            <% File.open('./data/chat_response.txt') do |file| %>
+                                <% file.each_line do |line| %>
+                                  <% botmessage = line %>
+                                <% end %>
+                            <% end %>
+                            <% if mymessage != ""%>
+                            <p class="mymessage">
+                                <%= mymessage + " : you"  %>
+                            </p>
+                            <% end %>
+                            <% if botmessage != "" %>
+                            <p class="botmessage">
+                               <%= "monocle : " + botmessage%>
+                            </p>
+                            <% end %>
+                        <% end %>
+                   </div>
+                    <%= form_tag("/", method: "get") do %>
+                      <%= text_field_tag(:message) %>
+                      <%= submit_tag("Send") %>
+                    <% end %>
+                </div>
+                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+                <script type="text/javascript">
+                    // jQuery Document
+                    $(document).ready(function(){
+                    });
+                </script>
+            </div>
+            <div id="contents_home">
+                <div class="center jumbotron">
+                <!--<h1>SupporTech!</h1>-->
+                <!--<%#= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>-->
+                <!--<p>sign in</p>-->
+                <%= link_to "Display SuppliesList!", list_path, class: "btn btn-lg btn-primary" %>
+                </div>
+            </div>
+            <div id="footer">
+                 <%= image_tag('sgoo.png', :size => "120x60") %>
+            </div>
+        </div>
+    <pre>
+  </body>
+</html>

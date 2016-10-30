@@ -1,0 +1,62 @@
+<% require 'csv' %>
+<% provide(:title, "List") %>
+<p>
+  <%= link_to "Update!", list_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to "Home", root_path, class: "btn btn-lg btn-primary" %>
+</p>
+  <!--更新回数のカウントのための変数-->
+  <% click_count = cookies[:click_count] %>
+  <!--setgpsの実行-->
+  <% setcommand = 'python ./scripts/setgps.py ' + click_count.to_s %>
+  <% system(setcommand)%>
+
+  <% cookies[:click_count] = click_count.to_i + 1 %>
+  <!--10回更新したら最初のけ位置情報へ-->
+  <% if cookies[:click_count] == 11 then %>
+    <% cookies[:click_count] = 1%>
+  <% end %>
+  
+  <!--getgpsの実行-->
+  <% getcommand = 'python ./scripts/getgps.py' %>
+  <% system(getcommand)%>
+  <!-- nearestshelter.txtの読み込み -->
+  <% begin %>
+    <% csvfilename = "" %>
+    <% File.open('./data/nearestshelter.txt') do |file| %>
+        <% file.each_line do |line| %>
+          <% csvfilename = line %>
+        <% end %>
+    <% end %>
+    
+    <!--csvfilenameをコンマで分割-->
+    <% csvfiledata = csvfilename.split(",") %>
+    <!-- csvファイルの読み込みと表示 -->
+    <% filepath = "./data/" + csvfiledata[0] %>
+    <% csv_data = CSV.table(filepath) %>
+    <!--表の幅の取得-->
+    <% data_length = csv_data.first.length%>
+    <!--避難所の名前を取得-->
+    <% shelterlistdata = CSV.table('./data/shelterlist.csv') %>
+    <% sheltername = shelterlistdata[csvfiledata[1].to_i]['避難所']%>
+    <div class="layout-box">
+      <p>
+        <%= shelterlistdata[csvfiledata[1].to_i][1] + "の状況"  %>
+      </p>
+      <table>
+        <tr>
+          <td width = 200>品名</td>
+          <td width = 100>不足</td>
+        </tr>
+        <% csv_data.each do |data| %>
+          <tr>
+            <td><%= data[1] %></td>
+            <td><%= data[2] %></td>
+          </tr>
+        <% end %>    
+      </table>
+    <% end %>
+    </div>
+  <div class="layout-box">
+    <p>位置情報</p>
+    <%= image_tag ("staticmap.png"), :align => "center" %>    
+  </div>
