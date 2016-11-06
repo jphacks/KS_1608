@@ -1,0 +1,53 @@
+#chat-frame {
+  min-width: auto;
+  max-width: auto;
+  margin: auto;
+  padding: 1em 2em;
+  background-color: #363636;
+}
+.chat-talk {
+  overflow: hidden;
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+.chat-talk span {
+  display: block;
+  margin: 0px;
+  padding: 0px;
+}
+.chat-talk .talk-icon {
+  float: left;
+  width: auto;
+}
+.chat-talk .talk-content {
+  position: relative;
+  box-sizing: border-box;
+  width: auto;
+  min-height: 50px;
+  border-radius: 20px;
+  background-color: #fff;
+  margin: 0 auto 0 20px;
+  padding: 1em;
+  float: left;
+
+  color: white;
+  background: #A8A7A7 ;
+}
+.chat-talk .talk-icon img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+  border: 0px solid #fff;
+  border-radius: 50%;
+}
+
+.chat-talk.mytalk .talk-icon {
+  float: right;
+}
+
+.chat-talk.mytalk .talk-content {
+  margin: 0 20px 0 auto;
+  color: white;
+  background: #474747 ;
+  float: right;
+}
