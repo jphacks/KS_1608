@@ -1,0 +1,105 @@
+<% provide(:title, 'List')%>
+<div class="row">
+    <div class="col-md-12" style="background: white;">
+		<div class="panel panel-default">
+	  		<div class="panel-heading">
+				<h2>MonoChat</h2>
+			</div>
+		<div class="panel-body">
+		    <div id="chat-frame">
+			    <p class="chat-talk">
+				    <span class="talk-icon">
+				        <%= image_tag("monocle.jpg", :alt => "tartgeticon") %>
+					    <!--<img src="monocle.jpg" alt="tartgeticon" width="XX" height="XX"/>-->
+					</span>
+					<span class="talk-content">熊本城の物資不足リストを表示するよ</span>
+					<!--<span class="talk-content"><%= @botmessage %></span>-->
+				</p>
+				<p class="chat-talk mytalk">
+					<span class="talk-icon">
+					    <%= image_tag("DSC_0310.jpg", :alt => "myicon") %>
+					    <!--<img src="DSC_0310.JPG" alt="myicon" width="XX" height="XX"/>-->
+					</span>
+				    <span class="talk-content">トイレットペーパを5つ持って行きます。</span>
+					<!--<span class="talk-content"><%= @mymessage %></span>-->
+				</p>
+				<p class="chat-talk">
+				    <span class="talk-icon">
+				        <%= image_tag("monocle.jpg", :alt => "tartgeticon") %>
+					    <!--<img src="monocle.jpg" alt="tartgeticon" width="XX" height="XX"/>-->
+					</span>
+				    <span class="talk-content">ありがとう。待ってるね。</span>
+				</p>
+				<p class="chat-talk mytalk">
+				    <span class="talk-icon">
+                        <%= image_tag("DSC_0310.jpg", :alt => "myicon") %>				        
+					    <!--<img src="DSC_0310.JPG" alt="myicon" width="XX" height="XX"/>-->
+					</span>
+				    <span class="talk-content">了解。</span>
+				</p>
+			</div>
+			<div class="panel-footer">
+		  		<div class="input-group">
+		   			<input type="text" class="form-control">
+		   				<span class="input-group-btn">
+		   				 <!--   <%= form_for(:list, url: list_path) do |f|%>-->
+		   				 <!--   <%= f.label :message %>-->
+		   				 <!--   <%= f.text_field :message, class: 'form-control' %>-->
+			 			    
+			 			   <!-- <%= f.submit "send", class: 'btn btn-primary' %>-->
+			 			   <!--<% end %>-->
+			 			    <button class="btn btn-default" type="button">Send</button>
+		   				</span>
+					</input>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+
+<div class="col-md-6" style="background: white;">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+		    <h2>MonoList</h2>
+		</div>
+        <div class="panel-body">
+		    <ul class="list-group">
+			    <li class="list-group-item">
+					<span class="badge"> 14</span>
+					Water 500ml
+				</li>
+			    <li class="list-group-item">
+				    <span class="badge"> 25</span>
+				    Water 2L
+				</li>
+				<li class="list-group-item">
+					<span class="badge"> 50</span>
+					Ramen
+				</li>
+				<li class="list-group-item">
+					<span class="badge"> 43</span>
+					懐中電灯
+				</li>
+				<li class="list-group-item">
+					<span class="badge"> 11</span>
+					携帯ラジオ
+				</li>
+			</ul>
+		</div>
+    </div>
+</div>
+
+<div class="col-md-6" style="background: white;">
+	<div class="panel panel-default">
+	  	<div class="panel-heading">
+			<h2>MonoMap</h2>
+		</div>
+	  	<div class="panel-body">
+	  	    <p class="text-center">
+    	        <%= image_tag("staticmap.png", :size => "400x360", :align => "center") %>
+	  	    </p>
+	  	</div>
+    </div>
+</div>
+
