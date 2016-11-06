@@ -1,0 +1,8 @@
+<div class="center jumbotron bg">
+  <h1>This page is main page.</h1>
+  
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  <% if logged_in?%>
+    <%= link_to "Go to List page!", '#', class: "btn btn-lg btn-primary" %>
+  <% end %>
+</div>
